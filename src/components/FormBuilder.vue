@@ -119,6 +119,9 @@
 				for (let key in this.formInfo[form]) {
 					this.formInfo[form][key] = "";
 				}
+				for (let key in this.validateErrors[form]) {
+					this.validateErrors[form][key] = "";
+				}
 				this.$refs[form][0].reset();
 			},
 		},
