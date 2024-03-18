@@ -3,11 +3,14 @@
 		<p>{{ label }}</p>
 		<input
 			v-bind="$attrs"
-			:value="value"
-			@input="$emit('input', $event.target.value)"
+			@input="$emit('update:modelValue', $event.target.value)"
 			:type="type"
-			:name="name"
-			required />
+			:name="name" />
+		<div
+			v-if="error"
+			class="error">
+			{{ error }}
+		</div>
 	</div>
 </template>
 
@@ -16,9 +19,6 @@
 		name: "FormInput",
 
 		props: {
-			value: {
-				type: String,
-			},
 			label: {
 				type: String,
 				default: "",
@@ -28,6 +28,10 @@
 				default: "text",
 			},
 			name: {
+				type: String,
+				default: "",
+			},
+			error: {
 				type: String,
 				default: "",
 			},

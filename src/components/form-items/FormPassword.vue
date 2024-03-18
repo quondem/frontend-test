@@ -3,8 +3,7 @@
 		:label="label"
 		:type="type"
 		:name="name"
-		:value="value"
-		@input="$emit('input', $event.target.value)" />
+		:error="error" />
 </template>
 
 <script>
@@ -13,9 +12,6 @@
 	export default {
 		name: "FormPassword",
 		props: {
-			value: {
-				type: String,
-			},
 			label: {
 				type: String,
 				default: "",
@@ -25,6 +21,10 @@
 				default: "text",
 			},
 			name: {
+				type: String,
+				default: "",
+			},
+			error: {
 				type: String,
 				default: "",
 			},

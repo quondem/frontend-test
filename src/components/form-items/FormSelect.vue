@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<p>{{ label }}</p>
-		<select :name="name">
+		<select
+			@input="$emit('update:modelValue', $event.target.value)"
+			:name="name">
 			<option
 				v-for="option in options"
 				:key="option.value"
@@ -9,6 +11,11 @@
 				{{ option.text }}
 			</option>
 		</select>
+		<div
+			v-if="error"
+			class="error">
+			{{ error }}
+		</div>
 	</div>
 </template>
 
@@ -29,6 +36,10 @@
 			options: {
 				type: Object,
 				required: true,
+			},
+			error: {
+				type: String,
+				default: "",
 			},
 		},
 	};

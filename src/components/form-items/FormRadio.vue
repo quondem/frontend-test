@@ -9,10 +9,15 @@
 				required
 				:type="type"
 				:name="name"
-				:id="option.value"
 				:value="option.value"
-				:checked="option.selected" />
+				:checked="option.selected"
+				@input="$emit('update:modelValue', $event.target.value)" />
 			<label :for="option.value">{{ option.text }}</label>
+		</div>
+		<div
+			v-if="error"
+			class="error">
+			{{ error }}
 		</div>
 	</fieldset>
 </template>
@@ -38,6 +43,10 @@
 			options: {
 				type: Object,
 				required: true,
+			},
+			error: {
+				type: String,
+				default: "",
 			},
 		},
 	};
